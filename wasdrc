@@ -94,16 +94,16 @@ alias path="cd ~; find -type f | fzf | sed 's/^..//' | tr -d '\n' | xclip -selec
 alias pathd="cd ~;find -type d | fzf | sed 's/^..//' | tr -d '\n' | xclip -selection c" #get folders path
 
 #alias-git
-git config --local alias.st 'status -sb' # git status - git st
-git config --local alias.ll 'log --oneline' # git log - git ll
-git config --local alias.last 'log -1 HEAD --stat' #git last commit - git last
-git config --local alias.cm 'commit -m' #git commit - git cm
-git config --local alias.rv 'remote -v' #git remote - git rv
-git config --local alias.d 'diff' # git diff - git d
-git config --local alias.se '!git rev-list --all | xargs git grep -F' #git search - git se <keyword>
-git config --local help.autocorrect 20 #git autocorrect
-git config --local alias.p 'push' #git push - git p
-git config --local alias.a 'add' #git add - git a
+git config --global alias.st 'status -sb' # git status - git st
+git config --global alias.ll 'log --oneline' # git log - git ll
+git config --global alias.last 'log -1 HEAD --stat' #git last commit - git last
+git config --global alias.cm 'commit -m' #git commit - git cm
+git config --global alias.rv 'remote -v' #git remote - git rv
+git config --global alias.d 'diff' # git diff - git d
+git config --global alias.se '!git rev-list --all | xargs git grep -F' #git search - git se <keyword>
+git config --global help.autocorrect 20 #git autocorrect
+git config --global alias.p 'push' #git push - git p
+git config --global alias.a 'add' #git add - git a
 
 #alias-others 
 alias cls='clear' #clear by cls
