@@ -1,6 +1,8 @@
 ![](one.jpg)
 
-wasd - simple terminal utility literally saved hours!!
+
+<p align='canter'><b>wasd</b> - A Simple Terminal Utility Literally Saved Hours!!</p>
+
 
 ## Features
 
@@ -23,7 +25,7 @@ wasd - simple terminal utility literally saved hours!!
 `x` - exit terminal
 
 ---
-### others
+### Others
 
 `dd` - open dir in current path
 
@@ -69,7 +71,7 @@ echo -e "source ~/.config/wasd/wasdrc" >> ~/<your_shell_rc>
 
 If you wanna remove ...
 
-5. remove
+5. Remove
 ```
 rm -rf ~/.config/wasd/
 ```
