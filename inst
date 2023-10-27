@@ -1,7 +1,7 @@
 #!/bin/bash
 
 p="fzf exa wget"
-url="https://raw.githubusercontent.com/cx0y/wasd/main/"
+url="https://raw.githubusercontent.com/cx0y/wasd/main/code"
 
 if [ "$1" == "i" ]
 then

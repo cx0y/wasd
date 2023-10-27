@@ -1,4 +1,4 @@
-![](one.jpg)
+![](./src/one.jpg)
 
 
 <p align='canter'><b>wasd</b> - A Simple Terminal Utility Literally Saved Hours!!</p>
