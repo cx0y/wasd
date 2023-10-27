@@ -52,28 +52,18 @@ cat ~/.config/wasd/wasdrc | grep alias
 ```
 ## Installation & Reomve
 
-1. Clone and Enter
+Download file `inst`
+
+### 1. Install
+
 ```sh
-git clone https://github.com/cx0y/wasd; cd wasd
-```
-2. Install Site Packages
-```sh
-sudo <your_packman_install> $(cat deb)
-```
-3. Install
-```
-mkdir ~/.config/wasd/; cp wasdrc url ~/.config/wasd;
-```
-4. Load
-```
-echo -e "source ~/.config/wasd/wasdrc" >> ~/<your_shell_rc>
+bash inst i 
 ```
 
-If you wanna remove ...
+### 2. uninstall
 
-5. Remove
-```
-rm -rf ~/.config/wasd/
+```sh
+bash inst u
 ```
 
 ## Configure
@@ -81,8 +71,18 @@ rm -rf ~/.config/wasd/
 ```sh
 vim ~/.config/wasd/wasdrc
 ```
+
 Edit
 ```sh
 BROWSER='your_browser'
 ENGINE='your_preferred_engine'
 ```
+Ex:
+```sh
+BROWSER='firefox'
+ENGINE='https://duckduckgo.com/?q='
+```
+
+
+
+
