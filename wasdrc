@@ -57,9 +57,25 @@ backup(){
 }
 
 bookmark(){
+    #add_bookmark_url
     echo -e "Enter Bookmark Url:"
     read url 
     echo -e $url >> ~/.config/wasd/url
+}
+
+#diff-func
+confirm(){
+    #!/usr/bin/env bash
+    #confirmation_function_before_
+    echo "About to execute $1 command"
+    echo -n "Would you like to proceed y/n? "
+    read reply
+    if [ "$reply" = y -o "$reply" = Y ]
+    then
+        $1 "${@:2}"
+    else
+        echo "$1 ${@:2} cancelled"
+    fi
 }
 
 #alias-path
@@ -79,17 +95,18 @@ alias rm='rm -i' #rm with conformation
 alias du='du -sh * | sort -h' #file-folder size
 #alias df='df -h' 
 alias count='find . -type f | wc -l' #count total number of files
+alias efdel='find -empty -type d -delete;find -empty -type f -delete' #delete_all_empty_files_folders
 
 #alias-system
 #alias tmux=''
-alias root='sudo su' #rooting terminal
+alias root='confirm sudo su' #rooting terminal
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort" #mounted devices
-alias slp='systemctl suspend' #sleeping
-alias down='shutdown now' #shut-down system 
+alias slp='confirm systemctl suspend' #sleeping
+alias down='confirm shutdown now' #shut-down system 
 alias open='xdg-open' #open file 
 
 #alias-xclip
-alias .='pwd | xclip -selection c ; echo -e "copy current path"' #copy current path
+alias .='pwd | xclip -selection c ; echo -e "copied current path"' #copy_current_path
 alias path="cd ~; find -type f | fzf | sed 's/^..//' | tr -d '\n' | xclip -selection c" #get files path
 alias pathd="cd ~;find -type d | fzf | sed 's/^..//' | tr -d '\n' | xclip -selection c" #get folders path
 
@@ -106,7 +123,8 @@ git config --global alias.p 'push' #git push - git p
 git config --global alias.a 'add' #git add - git a
 
 #alias-others 
-alias cls='clear' #clear by cls
-alias c='clear' #clear by c
-alias x='exit' #exit
+#alias cls='clear' #clear_by_cls
+alias c='clear' #clear_by_c
+alias x='confirm exit' #exit
+alias backup_url='cp ~/config/wasd/url ~' #backup_url_file
 
