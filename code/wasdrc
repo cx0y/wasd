@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #config
-BROWSER='xdg-open'
+BROWSER='firefox'
 ENGINE='https://www.google.com/search?q='
 
 #wasd-func
