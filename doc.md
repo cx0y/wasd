@@ -52,7 +52,7 @@ wasd_uninstall
 
 ### 6. Base Commands
 
-`w` - open your bookmark url from cli
+`w` - open your bookmark url from cli (see: Custom Bookmark)
 
 `a` - lunch application from cli
 
@@ -143,6 +143,12 @@ wasd_uninstall
 `git p` - git push
 
 `git a` - git add 
+
+---
+
+### Custom Bookmark
+
+`bookmark` - to add your custom bookmark in `e` system
 
 ---
 #### End
