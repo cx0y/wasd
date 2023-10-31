@@ -1,7 +1,7 @@
-![](./src/one.jpg)
+![](one.jpg)
 
 
-<p align='canter'><b>wasd</b> - A Simple Terminal Utility Literally Saved Hours!!</p>
+<p align='canter'><b>WASD</b> - A Simple Terminal Utility Literally Saved Hours!!</p>
 
 
 ## Features
@@ -52,24 +52,31 @@ cat ~/.config/wasd/wasdrc | grep alias
 ```
 ## Installation & Reomve
 
-Download file `inst`
+Download `mk` file from this repo
+
 
 ### 1. Install
 
 ```sh
-bash inst i 
+bash mk <packman opt> 
+```
+
+Ex:
+
+```
+bash mk apt install
 ```
 
 ### 2. uninstall
 
 ```sh
-bash inst u
+sudo rm -rf ~/.config/wasd;sudo rm -rf /usr/local/bin/wasd  
 ```
 
 ## Configure
 
 ```sh
-vim ~/.config/wasd/wasdrc
+wasd_conf
 ```
 
 Edit
@@ -82,7 +89,4 @@ Ex:
 BROWSER='firefox'
 ENGINE='https://duckduckgo.com/?q='
 ```
-
-
-
 
