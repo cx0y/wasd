@@ -1,7 +1,7 @@
 #!/bin/bash
 
 p="fzf exa wget trash-cli"
-url="https://raw.githubusercontent.com/cx0y/wasd/main/code"
+url="https://raw.githubusercontent.com/cx0y/wasd/main/"
 
 sudo ${@} $p
 mkdir ~/.config/wasd/
