@@ -9,6 +9,7 @@ cd ~/.config/wasd/
 wget $url/wasdrc
 wget $url/url
 wget $url/wasd
+sudo chmod +x wasd
 sudo mv wasd /usr/local/bin/
 echo -e "Installation Complete: Please Run wasd to use the utility"
 
