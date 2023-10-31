@@ -67,10 +67,16 @@ Ex:
 bash mk apt install
 ```
 
+add this alias to your bashrc or zshrc or whatever ...
+
+```sh
+alias wasd="echo -e 'Using Wasd: All Alias And Settings Temporarily Overwritten';source ~/.config/wasd/wasdrc"
+```
+
 ### 2. uninstall
 
 ```sh
-sudo rm -rf ~/.config/wasd;sudo rm -rf /usr/local/bin/wasd  
+rm -rf ~/.config/wasd 
 ```
 
 ## Configure

@@ -1,4 +1,0 @@
-echo -e "Using Wasd: All Alias And Settings Temporarily Overwritten"
-source ~/.config/wasd/wasdrc
-
-
