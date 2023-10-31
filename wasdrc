@@ -58,9 +58,7 @@ backup(){
 
 bookmark(){
     #add_bookmark_url
-    echo -e "Enter Bookmark Url:"
-    read url 
-    echo -e $url >> ~/.config/wasd/url
+    nano ~/.config/wasd/url
 }
 
 #diff-func
@@ -91,11 +89,18 @@ alias .5='cd ../../../../../;pwd'
 #alias-filesystem
 alias ll='exa --long --header' #long list of path with header  
 alias p='pwd' #path 
-alias rm='rm -i' #rm with conformation 
+#alias rm='rm -i' #rm with conformation 
 alias du='du -sh * | sort -h' #file-folder size
 #alias df='df -h' 
 alias count='find . -type f | wc -l' #count total number of files
 alias efdel='find -empty -type d -delete;find -empty -type f -delete' #delete_all_empty_files_folders
+
+#trash-cli 
+alias rm='trash-put' #putting_files_to_trash
+alias rmls='trash-list' #showing_tist_of_trash_files
+alias rmres='trash-restore' #restoring_files
+alias rmrm='trash-remove' #remove_individual_files 
+alias rmrf='trash-empty' #empty_trash
 
 #alias-system
 #alias tmux=''
@@ -126,5 +131,5 @@ git config --global alias.a 'add' #git add - git a
 #alias cls='clear' #clear_by_cls
 alias c='clear' #clear_by_c
 alias x='confirm exit' #exit
-alias backup_url='cp ~/config/wasd/url ~' #backup_url_file
-
+alias backup_url='cp ~/.config/wasd/url ~' #backup_url_file
+alias wasd_conf='cd ~/.config/wasd/; vim wasdrc'
