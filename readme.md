@@ -6,4 +6,4 @@
 
 <br>
 
-<p align='center'><a href='doc.md'>Documentation</a> | <a href='doc.md'>Install</a> | <a href='./LICENSE'>License</a></P>
+<p align='center'><a href='./doc.md'>Documentation</a> | <a href='./doc.md'>Install</a> | <a href='./LICENSE'>License</a></P>
