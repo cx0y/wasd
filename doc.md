@@ -2,7 +2,7 @@
 
 ### 1. Installation
 
-Download `md` file ...
+<a href="./mk">Download</a> `md` file ...
 
 ```sh
 bash mk <packman_opt>
