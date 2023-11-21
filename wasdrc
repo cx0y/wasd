@@ -2,14 +2,13 @@
 
 #config
 BROWSER='firefox'
-ENGINE='https://www.google.com/search?q='
+ENGINE='ENGINE='https://www.ecosia.org/search?q='
+
 
 #wasd-func
 w(){
     #open web
-    cd ~/.config/wasd
-    $BROWSER "$(cat url usr_bookmark| fzf)"
-    cd ~
+    cd ~/.config/wasd && $BROWSER "$(cat url usr_bookmark| fzf)" && cd ~
 }
 
 a(){
@@ -76,6 +75,12 @@ confirm(){
     fi
 }
 
+#trash_rmv(){
+   #remove_trash_funtion 
+ #   cd /home/$USER/.local/share/Trash
+  #  shred -fuzn3 files/*
+#}
+
 wasd_update(){
     #auto_update
     url='https://raw.githubusercontent.com/cx0y/wasd/main/'
@@ -92,10 +97,12 @@ uninstall(){
     cd ~
 }
 
+
 #alias-path
 alias home='cd ~' # go-to home
 alias bin='cd /usr/local/bin/;exa' #go-to bin
 alias lbin='cd ~/.local/bin/;exa' #go-to bin
+alias trash='cd ~/.local/share/Trash/files/; pwd' #goto_trash
 alias ..='cd ..;pwd' #go-to up-dir
 alias .2='cd ../../;pwd'
 alias .3='cd ../../../;pwd'
@@ -103,7 +110,9 @@ alias .4='cd ../../../../;pwd'
 alias .5='cd ../../../../../;pwd'
 
 #alias-filesystem
+alias l='exa' #list_of_files_and_folders
 alias ll='exa --long --header' #long list of path with header  
+alias la='exa -al' #all_files_and_folders
 alias p='pwd' #path 
 #alias rm='rm -i' #rm with conformation 
 alias du='du -sh * | sort -h' #file-folder size
@@ -118,6 +127,7 @@ alias rmls='trash-list' #showing_tist_of_trash_files
 alias rmres='trash-restore' #restoring_files
 alias rmi='trash-rm' #remove_individual_files 
 alias rmrf="echo -e 'Do You Wanna Empty Trash?'; confirm trash-empty" #empty_trash
+alias del="shred -fzun3"
 
 #alias-system
 #alias tmux=''
@@ -130,6 +140,8 @@ alias down='confirm shutdown now' #shut-down system
 alias .='pwd | xclip -selection c ; echo -e "copied current path"' #copy_current_path
 alias path="cd ~; find -type f | fzf | sed 's/^..//' | tr -d '\n' | xclip -selection c" #get files path
 alias pathd="cd ~;find -type d | fzf | sed 's/^..//' | tr -d '\n' | xclip -selection c" #get folders path
+alias clip='xclip -selection c'
+
 
 #alias-git
 git config --global alias.st 'status -sb' # git status - git st
@@ -142,6 +154,9 @@ git config --global alias.se '!git rev-list --all | xargs git grep -F' #git sear
 git config --global help.autocorrect 20 #git autocorrect
 git config --global alias.p 'push' #git push - git p
 git config --global alias.a 'add' #git add - git a
+
+
+
 
 #alias-others 
 #alias cls='clear' #clear_by_cls
