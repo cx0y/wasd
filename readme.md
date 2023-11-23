@@ -22,7 +22,7 @@ add this alias to your bashrc or zshrc or whatever ...
 alias wasd="echo -e 'Using Wasd: All Alias And Settings Temporarily Overwritten';source ~/.config/wasd/wasdrc"
 ```
 
-###Run
+### Run
 ```sh
 wasd
 ```
