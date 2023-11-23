@@ -2,13 +2,13 @@
 
 #config
 BROWSER='firefox'
-ENGINE='ENGINE='https://www.ecosia.org/search?q='
-
+ENGINE='https://www.ecosia.org/search?q='
 
 #wasd-func
 w(){
-    #open web
-    cd ~/.config/wasd && $BROWSER "$(cat url usr_bookmark| fzf)" && cd ~
+    #open_web
+    url_bmk=$(cat ~/.config/wasd/usr_bookmark)
+    $BROWSER "$(echo $url_base$url_bmk| fzf -m)"
 }
 
 a(){
@@ -20,7 +20,7 @@ a(){
 
 s(){
     #open file
-    xdg-open "$(find -type f | fzf)"
+    xdg-open "$(find -type f | fzf -m)"
 }
 
 d(){
@@ -57,7 +57,7 @@ backup(){
 
 bookmark(){
     #add_bookmark_url
-    nano ~/.config/wasd/usr_bookmark
+    $EDITOR ~/.config/wasd/usr_bookmark
 }
 
 #diff-func
@@ -81,22 +81,27 @@ confirm(){
   #  shred -fuzn3 files/*
 #}
 
+wasd_install(){
+    #wasd_installation_function 
+    sudo ${@} fzf exa trash-cli sxiv 
+    mkdir ~/.config/wasd/
+    cp wasdrc ~/.config/wasd/
+    touch ~/.config/wasd/usr_bookmark
+    echo "Done ..."
+}
+
 wasd_update(){
     #auto_update
     url='https://raw.githubusercontent.com/cx0y/wasd/main/'
     cd ~/.config/wasd/
-    rm -rf wasdrc url
+    rm -rf wasdrc
     wget $url/wasdrc
-    wget $url/url
 }
 uninstall(){
-    cd ~/.config/wasd/
-    mv usr_bookmark ~/usr_bookmark.bak
-    cd ..
-    rm -rf wasd
-    cd ~
+    #uninstall_wasd
+    cp ~/.config/wasd/usr_bookmark ~
+    sudo rm -rf ~/.config/wasd/
 }
-
 
 #alias-path
 alias home='cd ~' # go-to home
@@ -141,7 +146,10 @@ alias .='pwd | xclip -selection c ; echo -e "copied current path"' #copy_current
 alias path="cd ~; find -type f | fzf | sed 's/^..//' | tr -d '\n' | xclip -selection c" #get files path
 alias pathd="cd ~;find -type d | fzf | sed 's/^..//' | tr -d '\n' | xclip -selection c" #get folders path
 alias clip='xclip -selection c'
+alias mvclip='xargs -I{} echo "{}" <<< "$(xclip -out -selection clipboard)" | xargs -I{} mv {}'
 
+#sxiv-image
+alias sxiv='sxiv -rqto' 
 
 #alias-git
 git config --global alias.st 'status -sb' # git status - git st
@@ -156,12 +164,247 @@ git config --global alias.p 'push' #git push - git p
 git config --global alias.a 'add' #git add - git a
 
 
-
-
 #alias-others 
 #alias cls='clear' #clear_by_cls
 alias c='clear' #clear_by_c
 alias x='confirm exit' #exit
 #alias backup_url='cp ~/.config/wasd/url ~' #backup_url_file
-alias wasd_conf='cd ~/.config/wasd/; vim wasdrc'
+alias wasd_conf='cd ~/.config/wasd/; $EDITOR wasdrc'
 alias wasd_uninstall='confirm uninstall'
+
+#help
+docum="
+
+wasd - a simple utility
+
+Update: wasd_update
+Configure: wasd_conf
+Uninstall: wasd_uninstall
+Help: wasd_help
+
+Base commands:
+- Open urls in Browser: w
+- Lunch Application: a
+- Open any file: s
+- Goto any folder: d
+- Search anying (web): e
+- Clear: c
+- Exit: x
+
+Path:
+- Go home: home
+- Local bin (usr/local/bin): bin
+- Local bin (usr/.local/bin): lbin
+- Up a dir : ..
+- Up n Dir : .n (upto 5)
+
+File:
+- Long list files: ll
+- Path: p
+- File/Folder size: du
+- Count files number: count
+- Delete empty file/dir: efdel
+- Open File: open <file>
+- Goto dir in current path: dd
+- Fix broken path: fixpath
+- Copy Current path: .
+- Copy file path: path
+- Copy folder path: pathd
+- Remove file: rmf <file> (trashed)
+- Trash List: rmls
+- Trash recover: rmres
+- Empty Trash: rmrf
+- Delete sensitive file: del -v <file>
+
+System:
+- Root access: root
+- Mount Point: mnt
+- Suspend System: slp
+- Shutdown System: down
+
+Git (alias):
+- Git status: git st
+- Git log: git ll
+- Last commit: git last
+- Git commit: git cm <msg>
+- Git remote: git rv
+- Git diff: git d
+- Git Search: git se <keyword>
+- Git Add: git a <file>
+- Git Push: git p
+
+Oth:
+- Add custom bookmark(web-url): bookmark
+"
+alias wasd_help='echo $docum'
+
+
+
+
+
+
+#urls 
+url_base="
+https://google.com/
+https://mail.google.com/mail/u/0/#inbox
+https://photos.google.com/u/0/albums
+https://www.youtube.com
+https://music.youtube.com
+https://mail.google.com/chat/u/0/
+https://classroom.google.com/u/0/
+https://contacts.google.com
+https://calendar.google.com/calendar/u/0/r?pli=1
+https://drive.google.com/drive/u/0/
+https://meet.google.com
+https://hangouts.google.com
+https://duo.google.com
+https://docs.google.com/document/u/0/
+https://docs.google.com/presentation/u/0/
+https://docs.google.com/forms/u/0/
+https://docs.google.com/spreadsheets/u/0/
+https://www.google.com/travel/?dest_src=al
+https://podcasts.google.com
+https://earth.google.com/web/
+https://www.google.com/android/find?u=0
+https://studio.youtube.com/
+https://images.google.com
+https://translate.google.co.in
+https://news.google.com/home
+https://bard.google.com
+https://www.youtube.com/handle
+
+https://mail.proton.me/u/0/inbox
+https://www.pdfdrive.com
+https://drive.proton.me/u/0/
+
+https://web.whatsapp.com
+https://web.telegram.org/z
+https://twitter.com/home
+https://discord.com/channels/@me
+https://www.reddit.com
+
+https://auth.opera.com/account/edit-profile
+https://accounts.firefox.com/
+https://github.com/
+https://quantum-computing.ibm.com
+
+https://open.spotify.com
+https://soundcloud.com/discover
+https://ncs.io/music
+
+https://www.pling.com
+https://chrome.google.com/webstore/category/extensions
+https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home
+https://addons.mozilla.org/en-US/firefox/
+https://addons.opera.com/en/extensions/
+
+https://myanimelist.net
+https://anilist.co
+https://animeschedule.net
+https://gogoanime.network
+https://www.crunchyroll.com
+https://www.animenewsnetwork.com
+https://gogoanime.cl
+https://www.livechart.me/timetable
+https://anichart.net
+https://hanime.tv/
+
+https://www.canva.com
+https://express.adobe.com/sp/projects
+https://dribbble.com
+
+https://www.pixiv.net
+https://www.uhdpaper.com
+https://pxfuel.com
+https://wallpaperaccess.com
+https://www.zerochan.net
+https://www.wallpapersun.com
+https://www.pinterest.ch
+https://wallpapersmug.com
+https://www.designspiration.com
+https://www.deviantart.com
+https://www.wallpaperflare.com
+https://wallpaperaccess.com
+https://wallpapercave.com
+https://wallpapers.com
+https://pixabay.com
+https://unsplash.com
+https://wallhaven.cc
+https://wallhere.com/en/wallpapers?q=anime
+https://wall.alphacoders.com
+https://dribbble.com
+https://depositphotos.com
+https://www.peakpx.com
+
+https://chat.openai.com/
+https://www.speedtest.net
+https://keybr.com
+
+https://app.simplenote.com
+https://www.amplenote.com/notes/
+
+https://www.wsj.com
+https://www.bbc.com
+
+https://ocw.mit.edu
+https://www.edx.org/school/harvardx
+https://openlearning.mit.edu/courses-programs/mitx-courses
+https://oceanofpdf.com
+
+https://wikileaks.org
+https://onlinelibrary.wiley.com
+https://cprogramming.com
+https://www.ncbi.nlm.nih.gov
+https://stars.chromeexperiments.com
+https://cosmologist.info
+https://imgur.com
+https://knowyourmeme.com
+https://freecomputerbooks.com
+https://vimawesome.com
+https://vimcolorschemes.com
+https://archive.org
+
+https://youtube-thumbnail-grabber.com
+https://readme-typing-svg.demolab.com/demo/
+https://www.shorturl.at
+https://pinetools.com/blur-image
+https://url-decode.com/tool/create-array-js
+https://url-decode.com/tool/create-array-js
+https://www.the-qrcode-generator.com
+https://css.glass
+https://cssgradient.io
+https://webgradients.com
+https://www.typingstudy.com/lesson/1
+https://www.easybengalityping.com
+https://www.toptal.com/developers/keycode
+https://carbon.now.sh
+https://browserframe.com
+https://coolors.co
+https://codebeautify.org/pug-to-html-converter
+https://www.ascii-art-generator.org
+https://www.remove.bg
+https://www.adobe.com/express/feature/image/remove-background
+https://levelupdefy.github.io/font-to-svg/
+https://icons8.com
+https://patorjk.com
+https://www.onlinecorrection.com
+https://tempail.com/en/
+https://anonymsms.com/temporary-phone-number/
+https://passwordsgenerator.net
+https://www.doogal.co.uk/RandomAddresses
+https://blog.reedsy.com/character-name-generator/language/english/
+
+https://www.epicquotes.com
+
+https://gx.games
+https://vgraphs.com/extra/player-cards/v-protocol
+
+https://www.1001fonts.com
+https://www.fontspace.com
+https://www.dafont.com/tron.font
+https://fonts.google.com
+https://googlefonts.github.io/korean/
+
+https://www.bonappetit.com
+https://www.bbc.co.uk/food
+"
