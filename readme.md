@@ -3,19 +3,10 @@
 ### Installation
 
 ```sh
-wget https://raw.githubusercontent.com/cx0y/wasd/main/wasdrc
-```
+$ cd ~/.config
+$ git clone https://github.com/cx0y/wasd.git
 
-```sh
-source wasdrc
-bash wasd_install <packman_opt>
 ```
-Ex:
-
-```sh
-bash wasd_install apt install
-```
-
 add this alias to your bashrc or zshrc or whatever ...
 
 ```sh
@@ -113,4 +104,3 @@ ENGINE='https://duckduckgo.com/?q='
 - Add custom bookmark(web-url): `bookmark`
 
 ### END
-

@@ -7,8 +7,9 @@ ENGINE='https://www.ecosia.org/search?q='
 #wasd-func
 w(){
     #open_web
-    url_bmk=$(cat ~/.config/wasd/usr_bookmark)
-    $BROWSER "$(echo $url_base$url_bmk| fzf -m)"
+   #url_bmk=$(cat ~/.config/wasd/usr_bookmark)
+    path=~/.config/wasd
+    $BROWSER "$(cat $path/url $path/usr_bookmark| fzf -m)"
 }
 
 a(){
@@ -81,21 +82,23 @@ confirm(){
   #  shred -fuzn3 files/*
 #}
 
-wasd_install(){
+#wasd_install(){
     #wasd_installation_function 
-    sudo ${@} fzf exa trash-cli sxiv 
-    mkdir ~/.config/wasd/
-    cp wasdrc ~/.config/wasd/
-    touch ~/.config/wasd/usr_bookmark
-    echo "Done ..."
-}
+#    sudo ${@} fzf exa trash-cli sxiv 
+#    mkdir ~/.config/wasd/
+#    cp wasdrc ~/.config/wasd/
+#    touch ~/.config/wasd/usr_bookmark
+#    echo "Done ..."
+#}
 
 wasd_update(){
     #auto_update
     url='https://raw.githubusercontent.com/cx0y/wasd/main/'
     cd ~/.config/wasd/
     rm -rf wasdrc
+    rm -rf url
     wget $url/wasdrc
+    wget $url/url
 }
 uninstall(){
     #uninstall_wasd
